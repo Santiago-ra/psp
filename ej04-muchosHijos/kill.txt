@@ -1,0 +1,4 @@
++Para ver en consola todas las señales que se pueden enviar usamos kill -L
+
++Para matar indicar que un proceso finalice en consola presionamos Ctrl+C, que es 
+lo mismo que indicar kill -SIGINT + PID del que quiera matar
