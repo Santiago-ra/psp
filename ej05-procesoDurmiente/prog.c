@@ -11,11 +11,14 @@ int main(int argc, char const *argv[])
 {
     signal(SIGUSR1,manejadorSenyal); //Estamos vinculando la señal SIGUSR1 con la funcion, asi cuando reciba esta señal, parara lo que este haciendo y lanzar lo que tenga definida en la funcion manejadorSenyal
     printf("PID: %d\n", getpid());
-    sleep(20);
+    //sleep(20);
+    pause(); //Para el proceso hasta que una señal llegue
     return 0;
 }
 
 //El sleep es interrumpido cuando recibe cualqueir señal
 void manejadorSenyal(int numSenyal){
-    printf("He recibido una señal número: %d", numSenyal); //numSenyal guarda el número de la señal
+    printf("He recibido una señal número: %d\n", numSenyal); //numSenyal guarda el número de la señal
 }
+
+
