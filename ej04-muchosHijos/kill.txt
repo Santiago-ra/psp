@@ -5,3 +5,4 @@ lo mismo que indicar kill -SIGINT + PID del que quiera matar
 
 +Hay señales reservadas para que se puedan editar y que hagan lo que tu quieras como -SIGUSR1 y 
 -SIGUSR2, (mirar codigo de carpeta ej05), luego se ejecuta kill -SIGUSR1 + pid
+
