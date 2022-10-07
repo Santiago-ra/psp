@@ -4,6 +4,8 @@
 
 int main(int argc, char const *argv[])
 {
+    //FORMAS DE LANZAR UN PROGRAMA
+
     //Utilizamos mediante el path (ruta de un lanzador) + nombre ejecutable + (parametros si se quiere) + null
     //execl("/usr/bin/firefox", "firefox" ,"www.youtube.com", NULL);
 
@@ -12,6 +14,7 @@ int main(int argc, char const *argv[])
     
     //char* es un string en c y esta manera es como se define un array en c
     char* v[] = {"firefox","https:www.youtube.es", NULL};
-    execv("/usr/bin/firefox",v);
+    execv("/usr/bin/firefox",v); //ahora lanzamos el comando y le pasamos el array de arriba
+ 
     return 0;
 }
