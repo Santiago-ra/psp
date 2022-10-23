@@ -8,9 +8,7 @@
 
 int main (int argc, char const *argv[]){
 
-    //char* lista [] = {"/home/usuario/Documentos/fichero1","/home/usuario/Documentos/fichero2","/home/usuario/Documentos/fichero3","/home/usuario/Documentos/fichero4"};
-    //int tamanio = sizeof(argv); //con esto calculamos cuantas rutas hay en nuestra lista para preparar el for de abajo
-   printf("argc %i: pid del padre: %d\n", argc, getpid());
+    printf("Comienza el programa y soy el padre con PID: %d\n", getpid());
 
     if(argc < 2){
         fprintf(stderr,"\nError, Especifica al menos un archivo.\n");
@@ -20,18 +18,19 @@ int main (int argc, char const *argv[]){
 
     //Este for va creando los ficheros pasados como argumentos en la ruta donde se ejecute el programa
     for (int i = 1; i <= argc; i++){
-        char touch[7];
+        /*char touch[7];
         char fichero2 [250];
         strcpy(touch, "touch ");
-        strcpy(fichero2, argv[1]);
-
-        strcat(touch,fichero2);
+        strcpy(fichero2, argv[i]);*/
+        char touch[8];
+        strcpy(touch, "touch ");
+        strcat("touch ",argv[i]);
         system(touch);
     }
 
    //Los ficheros se pasan como argumentos a la hora de ejecutar el programa
    //se crearan un archivo con extension .hashes por cada fichero pasado como argumento, que contendra en su interior las 4 variantes de hash
-    for (int i = 1; i <= argc; i++){
+    for (int i = 1; i < argc; i++){
         
         
         if(fork() == 0){
@@ -92,18 +91,20 @@ int main (int argc, char const *argv[]){
 
             return 0;
 
-        }
-        
-        for (size_t i = 0; i < argc; i++)
-        {
-            /* code */
-        }
-        
-           
-        
+        }    
         
     }
 
+    int estado;
+    pid_t hijoFinalizado;
+    for (int i = 1; i < argc; i++){
+        hijoFinalizado = wait(&estado); //espera a que un hijo acabe, el primero que llegue
+        if (WEXITSTATUS(estado) == 0){
+            printf("El hijo con PID: %d ha finalizado con éxito\n", hijoFinalizado);
+        }else{
+            printf("El hijo con PID: %d ha finalizado con error\n", hijoFinalizado);
+        }
+    }
 
 
 
