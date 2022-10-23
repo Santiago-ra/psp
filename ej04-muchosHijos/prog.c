@@ -1,9 +1,9 @@
 //definimos una constante osea una variable que siempre va a valer lo mismo
-#define N_HIJOS 5
 #include <sys/types.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include <stdio.h>
+#define N_HIJOS 5
 
 int main (int argc, char const *argv[]){
 
@@ -25,7 +25,7 @@ int main (int argc, char const *argv[]){
     //una variable, te devolverá el id del hijo que ha esperado
     for (int i = 0; i < N_HIJOS; i++)
     {
-        pidHijo = wait(&estado); //Con esto ademas de guardar el pid del hijo que haya llegado en la 
+        pidHijo = wait(&estado); //Con esto ademas de guardar el pid del hijo que haya llegado al final en la 
         //variable pidHijo, se guarda en la variable estado el byte de la posicion que ocupa en cada vuelta y para cada hijo
         printf("El hijo %d ha finalizado con estado %d y valor de retorno %d\n",
         pidHijo, estado,WEXITSTATUS(estado));

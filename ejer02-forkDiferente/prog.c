@@ -11,7 +11,7 @@ int main(int argc, char const *argv[]){
 
     numPid = fork(); //se duplicara el camino, uno será el padre y el otro el hijo. Creara dos hilos de ejecucion
     //cuando se crea un fork, el hijo creado se identifica con un 0
-    if (numPid == 0){ //proceso hijo devolverá cierto y entrará en el if
+    if (numPid == 0){ //proceso hijo devolverá cierto y entrará en el if, el proceso que se ha separado si que tendra la variable numPid rellenada con un 0
         printf("Soy el hijo mi pid es: %d\n", getpid());
         num = 15;
         sleep(1);// hacemos que el hijo espere un segundo
